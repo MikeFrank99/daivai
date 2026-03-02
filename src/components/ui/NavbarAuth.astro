@@ -288,35 +288,7 @@ import Auth from "@/components/features/Auth.astro";
         });
     }
 
-    function updateMenuProportions() {
-        if (window.innerWidth > 768) {
-            document.documentElement.style.setProperty(
-                "--menu-mobile-scale",
-                "1",
-            );
-            return;
-        }
-
-        const h = window.innerHeight;
-        const w = window.innerWidth;
-        const ratio = h / w;
-
-        // Sistema adattivo: se lo schermo è più alto di un 16:9 standard (1.77),
-        // aumentiamo la scala del menu per compensare la verticalità.
-        let scale = 1;
-        if (ratio > 1.6) {
-            scale = 1 + (ratio - 1.6) * 0.5;
-        }
-
-        document.documentElement.style.setProperty(
-            "--menu-mobile-scale",
-            scale.toString(),
-        );
-    }
-
     initRingRotations();
-    updateMenuProportions();
-    window.addEventListener("resize", updateMenuProportions);
 
     function toggleMenu() {
         // Interrompiamo le animazioni degli elementi strutturali, ma NON dei rings
@@ -680,20 +652,20 @@ import Auth from "@/components/features/Auth.astro";
 
     @media (max-width: 768px) {
         .menu-text-path {
-            font-size: 50px;
+            font-size: 18px;
         }
 
         .ring-1 {
-            width: calc(210vw * var(--menu-mobile-scale, 1));
-            height: calc(210vw * var(--menu-mobile-scale, 1));
+            width: 70vw;
+            height: 70vw;
         }
         .ring-2 {
-            width: calc(160vw * var(--menu-mobile-scale, 1));
-            height: calc(160vw * var(--menu-mobile-scale, 1));
+            width: 53vw;
+            height: 53vw;
         }
         .ring-3 {
-            width: calc(110vw * var(--menu-mobile-scale, 1));
-            height: calc(110vw * var(--menu-mobile-scale, 1));
+            width: 37vw;
+            height: 37vw;
         }
 
         .radial-menu-container {
