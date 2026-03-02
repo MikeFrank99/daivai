@@ -79,7 +79,7 @@ function resizeCondensoText() {
     if (groups.length > 0) {
         if (isDesktop) {
             // Desktop: We want consistency across pages for certain titles
-            // We define a reference ratio based on the longest title ("I NOSTRI ULTIMI EVENTI")
+            // We define a reference ratio based on the longest title ("ULTIMI EVENTI")
             // so that shorter titles on other pages match its height.
             const REFERENCE_WIDTH_AT_100PX = 800; // Significantly reduced to make titles much bigger
             const systemGlobalRatio = targetWidth / REFERENCE_WIDTH_AT_100PX;

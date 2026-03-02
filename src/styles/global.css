@@ -6,7 +6,8 @@
     --secondary-rgb: 245, 229, 144;
     --font-heading: 'Poppins', sans-serif;
     --font-body: 'Poppins', sans-serif;
-    --menu-bg-color: #ce414e;
+    --menu-bg-color: #992c3a;
+    --menu-bg-rgb: 153, 44, 58;
 }
 
 
@@ -608,6 +609,11 @@ section {
     margin-bottom: -0.30em;
 }
 
+.condenso-text.spacing-ultimi-eventi {
+    margin-bottom: -0.35em;
+    /* Distanza verticale leggermente aumentata (meno negativo = più spazio) */
+}
+
 .text-gradient-wrapper {
     display: flex;
     flex-direction: column;
@@ -977,13 +983,13 @@ section {
     background: white;
     border: 2px solid var(--secondary-color);
     border-radius: 40px;
-    color: var(--primary-color);
+    color: var(--menu-bg-color);
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
 }
 
 .form-group input::placeholder {
-    color: rgba(251, 96, 104, 0.5);
+    color: rgba(var(--menu-bg-rgb), 0.5);
 }
 
 .form-group input:focus {
@@ -999,7 +1005,7 @@ section {
     width: 100%;
     padding: 1rem;
     background: var(--secondary-color);
-    color: var(--primary-color);
+    color: var(--menu-bg-color);
     border: none;
     border-radius: 40px;
     cursor: pointer;
@@ -1074,7 +1080,7 @@ section {
     width: 100%;
     padding: 0.8rem 1.5rem;
     background: var(--secondary-color);
-    color: var(--primary-color);
+    color: var(--menu-bg-color);
     border: none;
     border-radius: 40px;
     cursor: pointer;
@@ -1095,8 +1101,8 @@ section {
 
 
 .google-auth-btn:hover {
-    border-color: var(--primary-color);
-    background: rgba(var(--primary-rgb), 0.05);
+    border-color: var(--menu-bg-color);
+    background: rgba(var(--menu-bg-rgb), 0.05);
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }

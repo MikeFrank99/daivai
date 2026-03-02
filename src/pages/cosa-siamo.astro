@@ -115,19 +115,6 @@ import Sticker from "../components/ui/Sticker.astro";
             </section>
         </main>
 
-        <footer class="site-footer">
-            <img
-                src="/daivai/images/DaiVai-yellow.svg"
-                alt="Dai e Vai Logo"
-                class="footer-logo"
-            />
-            <p
-                style="color: var(--secondary-color); font-family: 'Poppins'; margin-top: 1rem;"
-            >
-                © 2026 Dai Vai - Tutti i diritti riservati
-            </p>
-        </footer>
-
         <script>
             import { initAnimations } from "../scripts/animations.js";
 
@@ -143,28 +130,11 @@ import Sticker from "../components/ui/Sticker.astro";
                     var(--primary-color) 0%,
                     var(--menu-bg-color) 100%
                 );
+                background-attachment: fixed;
+                background-size: cover;
                 min-height: 100vh;
                 padding-top: 80px;
-            }
-
-            .site-footer {
-                background-color: var(--secondary-color);
-                padding: 4rem 2rem;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                border-top: none;
-            }
-
-            /* Forziamo un colore di background diverso per il footer su questa pagina per contrasto col corpo */
-            .site-footer .footer-logo {
-                filter: brightness(0) saturate(100%) invert(48%) sepia(87%)
-                    deg(355deg) saturate(3195%) hue-rotate(334deg)
-                    brightness(101%) contrast(97%); /* Rosso primary */
-            }
-
-            .site-footer p {
-                color: var(--primary-color) !important;
+                padding-bottom: 20vh;
             }
 
             @media (max-width: 768px) {

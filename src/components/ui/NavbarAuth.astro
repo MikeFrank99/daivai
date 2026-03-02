@@ -163,12 +163,17 @@ import Auth from "@/components/features/Auth.astro";
     async function toggleLoginModal(show: boolean) {
         if (!loginModal || !profileLink) return;
 
-        // Calculate button center for the radial expansion
-        const rect = profileLink.getBoundingClientRect();
-        const centerX = rect.left + rect.width / 2;
-        const centerY = rect.top + rect.height / 2;
-
         if (show) {
+            // Se il menù radiale è aperto, chiudilo prima di aprire la modale
+            if (isMenuOpen) {
+                toggleMenu();
+            }
+
+            // Calculate button center for the radial expansion
+            const rect = profileLink.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+
             // Calculate radius to cover the entire screen
             const radius = Math.hypot(
                 Math.max(centerX, window.innerWidth - centerX),
@@ -197,6 +202,11 @@ import Auth from "@/components/features/Auth.astro";
             });
             document.body.style.overflow = "hidden";
         } else {
+            // Ottieni di nuovo le coordinate per l'animazione di chiusura
+            const rect = profileLink.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+
             gsap.to(loginModal, {
                 clipPath: `circle(0% at ${centerX}px ${centerY}px)`,
                 duration: 0.5,
@@ -302,11 +312,15 @@ import Auth from "@/components/features/Auth.astro";
 
         isMenuOpen = !isMenuOpen;
 
-        const rect = menuToggle.getBoundingClientRect();
-        const centerX = rect.left + rect.width / 2;
-        const centerY = rect.top + rect.height / 2;
-
         if (isMenuOpen) {
+            // Se la modale di login è aperta, chiudila prima di aprire il menù
+            if (loginModal && loginModal.style.display !== "none") {
+                toggleLoginModal(false);
+            }
+
+            const rect = menuToggle.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
             // Posizionamento dinamico del centro del menu basato sul pulsante
             gsap.set(".radial-menu-container", {
                 left: centerX,
@@ -635,7 +649,7 @@ import Auth from "@/components/features/Auth.astro";
         left: 0;
         width: 100vw;
         height: 100vh;
-        background: var(--primary-color);
+        background: var(--menu-bg-color);
         display: none;
         z-index: 2500;
         justify-content: center;
