@@ -1,0 +1,359 @@
+---
+import "../styles/global.css";
+import NavbarAuth from "../components/ui/NavbarAuth.astro";
+import ScrollArrow from "../components/ui/ScrollArrow.astro";
+import Sticker from "../components/ui/Sticker.astro";
+---
+
+<!doctype html>
+<html lang="it">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="Benvenuto nel nostro sito web" />
+        <meta name="keywords" content="sito web, servizi, contatti" />
+        <title>Dai Vai</title>
+
+        <!-- Favicon per tutti i browser e dispositivi -->
+        <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="/daivai/favicon/apple-touch-icon.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="/daivai/favicon/favicon-32x32.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="/daivai/favicon/favicon-16x16.png"
+        />
+        <link rel="manifest" href="/daivai/favicon/site.webmanifest" />
+        <link rel="shortcut icon" href="/daivai/favicon/favicon.ico" />
+
+        <!-- Favicon SVG per browser moderni -->
+        <link
+            rel="icon"
+            type="image/svg+xml"
+            href="/daivai/images/DaiVai.svg"
+        />
+
+        <link
+            rel="preload"
+            href="/daivai/fonts/condenso/Condenso-Regular.woff2"
+            as="font"
+            type="font/woff2"
+            crossorigin
+        />
+
+        <!-- Meta tag per il theme color -->
+        <meta name="theme-color" content="#FB6068" />
+
+        <link
+            rel="preload"
+            as="image"
+            href="/daivai/images/DaiVai-yellow.svg"
+        />
+
+        <!-- CSS Imported in frontmatter -->
+    </head>
+    <body>
+        <NavbarAuth />
+        <main>
+            <div class="container">
+                <div
+                    id="hero-wrapper"
+                    style="position: relative; height: 100vh; width: 100%; overflow: visible;"
+                >
+                    <section id="hero"></section>
+                    <section id="logo-overlay">
+                        <svg
+                            id="logo-svg"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 2000 1117"
+                            class="hero-image"
+                        >
+                            <!-- Each letter/segment as a separate path for explosion -->
+                            <path
+                                class="logo-piece"
+                                d="M567.09,513.09c85.89,0,150.63-22.36,194.24-67.08,43.61-44.72,65.42-107.8,65.42-189.23s-21.8-145.07-65.42-189.57C717.73,22.7,652.76.45,566.43.45h-206.92v330.55h136.17V111.26h72.09c78.77,0,118.14,48.5,118.14,145.51s-39.16,145.51-117.48,145.51H185.29l115.99-115.99-32.28-32.28c-25.45-25.45-66.7-25.45-92.15,0L19.81,411.06c-25.75,25.75-25.75,67.5,0,93.25l196.17,196.17c25.45,25.45,66.7,25.45,92.15,0l32.27-32.28-155.11-155.11h381.8Z"
+                                fill="var(--secondary-color)"></path>
+                            <path
+                                class="logo-piece"
+                                d="M1445.56,.45 L1581.73,.45 L1581.73,513.09 L1445.56,513.09 Z"
+                                fill="var(--secondary-color)"></path>
+                            <path
+                                class="logo-piece"
+                                d="M1083.65,604.61 L913.41,1117.22 L1052.93,1117.22 L1158.35,755.45 L1173.75,695.39 L1188.39,755.45 L1295.84,1117.22 L1442.09,1117.22 L1264.52,604.61 Z"
+                                fill="var(--secondary-color)"></path>
+                            <path
+                                class="logo-piece"
+                                d="M824.14,604.6 L721.01,952.13 L615.21,604.6 L467.03,604.6 L637.24,1117.24 L804.11,1117.24 L966.98,604.6 Z"
+                                fill="var(--secondary-color)"></path>
+                            <path
+                                class="logo-piece"
+                                d="M1980.69,613.38l-196.17-196.17c-25.44-25.45-66.7-25.45-92.15,0l-32.27,32.28,155.11,155.11h-310.38v512.64h136.17v-401.83h174.21l-115.99,115.99,32.28,32.28c25.45,25.45,66.7,25.45,92.15,0l157.05-157.05c25.75-25.75,25.75-67.5,0-93.25Z"
+                                fill="var(--secondary-color)"></path>
+                            <path
+                                class="logo-piece"
+                                d="M1099.11,151.31 L1114.46,91.23 L1129.15,151.31 L1236.62,513.08 L1382.79,513.08 L1205.24,.45 L1024.36,.45 L854.14,513.08 L993.65,513.08 Z"
+                                fill="var(--secondary-color)"></path>
+                        </svg>
+                    </section>
+                </div>
+            </div>
+
+            <section class="viewport-section combined-section">
+                <div class="text-gradient-wrapper">
+                    <div id="cosa-siamo" class="gradient-text-group">
+                        <h2
+                            class="condenso-text shine-reflection spacing-cosa-siamo reveal-chars"
+                        >
+                            COSA
+                        </h2>
+                        <h2 class="condenso-text shine-reflection reveal-chars">
+                            SIAMO?
+                        </h2>
+                    </div>
+                    <ScrollArrow class="arrow-icon" />
+                    <p class="info-paragraph shine-reflection reveal-lines">
+                        Siamo un'associazione culturale no-profit di giovani
+                        intenzionati a creare un impatto positivo sul territorio
+                        veronese attraverso lo sport.
+                    </p>
+
+                    <Sticker
+                        id="sticker-wrapper"
+                        containerId="sticker-container"
+                    />
+
+                    <div
+                        id="cosa-facciamo"
+                        class="gradient-text-group section-spacer"
+                    >
+                        <h2
+                            class="condenso-text shine-reflection spacing-cosa-facciamo reveal-chars"
+                        >
+                            COSA
+                        </h2>
+                        <h2 class="condenso-text shine-reflection reveal-chars">
+                            FACCIAMO?
+                        </h2>
+                    </div>
+                    <ScrollArrow class="arrow-icon" />
+                    <p class="info-paragraph shine-reflection reveal-lines">
+                        Organizziamo eventi sportivi, tornei e attività
+                        ricreative per coinvolgere la comunità locale e
+                        promuovere uno stile di vita sano e attivo.
+                    </p>
+
+                    <Sticker
+                        id="sticker-wrapper-left"
+                        containerId="sticker-container-left"
+                        variant="left"
+                    />
+
+                    <div
+                        id="come-funziona"
+                        class="gradient-text-group section-spacer"
+                    >
+                        <h2
+                            class="condenso-text shine-reflection spacing-come-funziona reveal-chars"
+                        >
+                            COME
+                        </h2>
+                        <h2 class="condenso-text shine-reflection reveal-chars">
+                            FUNZIONA?
+                        </h2>
+                    </div>
+                    <ScrollArrow class="arrow-icon" />
+                    <p class="info-paragraph shine-reflection reveal-lines">
+                        Con eventi singoli e corsi continuativi, non saprei che
+                        altro dire nel come funziona.
+                    </p>
+
+                    <div
+                        id="ultimi-eventi"
+                        class="gradient-text-group section-spacer"
+                    >
+                        <h2 class="condenso-text shine-reflection reveal-chars">
+                            I NOSTRI
+                        </h2>
+                        <h2 class="condenso-text shine-reflection reveal-chars">
+                            ULTIMI EVENTI
+                        </h2>
+                    </div>
+                </div>
+
+                <!-- Card Slider — popolato dinamicamente -->
+                <div class="events-slider-wrapper">
+                    <div class="events-slider" id="events-slider">
+                        <!-- Skeleton loader -->
+                        <div class="past-event-skeleton"></div>
+                        <div class="past-event-skeleton"></div>
+                        <div class="past-event-skeleton"></div>
+                        <div class="past-event-skeleton"></div>
+                        <div class="past-event-skeleton"></div>
+                        <div class="past-event-skeleton"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CTA Button -->
+            <div class="cta-button-wrapper">
+                <a href="#unisciti" class="cta-button">UNISCITI!</a>
+            </div>
+
+            <!-- Spacer to allow animation to finish -->
+            <div class="footer-spacer"></div>
+        </main>
+
+        <footer class="site-footer">
+            <svg
+                preserveAspectRatio="none"
+                id="footer-img"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 2278 683"
+            >
+                <path
+                    class="footer-svg"
+                    id="bouncy-path"
+                    fill="var(--primary-color)"
+                    d="M0-0.3C0-0.3,464,156,1139,156S2278-0.3,2278-0.3V683H0V-0.3z"
+                ></path>
+            </svg>
+            <img
+                src="/daivai/images/DaiVai-yellow.svg"
+                alt="Dai e Vai Logo"
+                class="footer-logo"
+            />
+            <div class="social-icons">
+                <a
+                    href="https://www.instagram.com/_dai_e_vai/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Instagram"
+                >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    >
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"
+                        ></rect>
+                        <path
+                            d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"
+                        ></path>
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                    </svg>
+                </a>
+                <a
+                    href="https://chat.whatsapp.com/IannFn3DAzECvgNsQ5CBLi"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="WhatsApp"
+                >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                    >
+                        <path
+                            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"
+                        ></path>
+                    </svg>
+                </a>
+            </div>
+        </footer>
+
+        <script>
+            import { initAnimations } from "../scripts/animations.js";
+            import { getPastEvents } from "@/lib/database/events";
+
+            initAnimations();
+
+            // ─── Caricamento eventi passati ────────────────────────────────────────
+            async function loadPastEvents() {
+                const slider = document.getElementById("events-slider");
+                if (!slider) return;
+
+                const { data: events, error } = await getPastEvents();
+
+                slider.innerHTML = "";
+
+                if (error || !events || events.length === 0) return;
+
+                const PLACEHOLDER =
+                    "/daivai/images/blue-sky-background-with-clouds-free-photo.webp";
+
+                slider.innerHTML = events
+                    .map(
+                        (ev: any) => `
+                <div class="event-card" data-event-id="${ev.id}">
+                    <div class="event-card-image">
+                        <img src="${ev.image_url ?? PLACEHOLDER}" alt="${ev.title}" loading="lazy" />
+                    </div>
+                    <div class="event-card-content">
+                        <h3 class="event-card-title">${ev.title}</h3>
+                        <p class="event-card-description">${ev.description ?? ""}</p>
+                    </div>
+                </div>
+            `,
+                    )
+                    .join("");
+            }
+
+            loadPastEvents();
+        </script>
+
+        <style>
+            /* Skeleton per eventi passati — stesse dimensioni di .event-card */
+            .past-event-skeleton {
+                flex-shrink: 0;
+                scroll-snap-align: center;
+                width: 85vw;
+                max-width: 400px;
+                height: 75vh;
+                max-height: 600px;
+                border-radius: 40px;
+                background: linear-gradient(
+                    90deg,
+                    rgba(255, 255, 255, 0.04) 25%,
+                    rgba(255, 255, 255, 0.09) 50%,
+                    rgba(255, 255, 255, 0.04) 75%
+                );
+                background-size: 200% 100%;
+                animation: shimmer 1.5s infinite;
+                border: 2px solid rgba(245, 229, 144, 0.15);
+            }
+
+            @keyframes shimmer {
+                0% {
+                    background-position: 200% 0;
+                }
+                100% {
+                    background-position: -200% 0;
+                }
+            }
+
+            @media (min-width: 769px) {
+                .past-event-skeleton {
+                    width: 350px;
+                    height: 450px;
+                }
+            }
+        </style>
+    </body>
+</html>
