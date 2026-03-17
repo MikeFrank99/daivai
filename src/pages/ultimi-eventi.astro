@@ -91,7 +91,7 @@ import ScrollArrow from "../components/ui/ScrollArrow.astro";
         </footer>
 
         <script>
-            import { initAnimations } from "../scripts/animations.js";
+            import { initAnimations, initEventsSlider } from "../scripts/animations.js";
             import { getPastEvents } from "@/lib/database/events";
             import { supabase } from "@/lib/client";
 
@@ -153,15 +153,21 @@ import ScrollArrow from "../components/ui/ScrollArrow.astro";
                     .map((ev: any) => buildEventCard(ev))
                     .join("");
                 
+                // Re-initialize slider with new DOM elements
+                initEventsSlider();
+
                 // Refresh reflection positions for new cards
                 // @ts-ignore
                 window.refreshReflection?.();
             }
 
+            // Start loading process
             loadEvents();
             
             window.addEventListener("load", () => {
                 initAnimations();
+                // Double check if initialization is needed
+                initEventsSlider();
                 // @ts-ignore
                 window.refreshReflection?.();
             });
