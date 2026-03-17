@@ -702,10 +702,15 @@ section {
 .arrow-icon {
     width: 60px;
     height: auto;
-    margin: 3rem auto;
-    /* Centered horizontally and balanced vertically */
+    margin: 5rem auto 2rem; 
     display: block;
     position: relative;
+}
+
+@media (max-width: 768px) {
+    .arrow-icon {
+        margin: 4rem auto 1rem;
+    }
 }
 
 @font-face {
@@ -1189,7 +1194,7 @@ section {
 .slider-outer-container {
     position: relative;
     width: 100%;
-    margin-top: 2rem;
+    margin-top: 0;
 }
 
 .events-slider-wrapper {
