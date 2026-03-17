@@ -14,10 +14,10 @@
 /* Font Face per Condenso */
 @font-face {
     font-family: 'Condenso';
-    src: url('/daivai/fonts/condenso/Condenso-Regular.woff2') format('woff2'),
-        url('/daivai/fonts/condenso/Condenso-Regular.woff') format('woff'),
-        url('/daivai/fonts/condenso/Condenso-Regular.ttf') format('truetype'),
-        url('/daivai/fonts/condenso/Condenso-Regular.svg#Condenso-Regular') format('svg');
+    src: url('../../public/fonts/condenso/Condenso-Regular.woff2') format('woff2'),
+        url('../../public/fonts/condenso/Condenso-Regular.woff') format('woff'),
+        url('../../public/fonts/condenso/Condenso-Regular.ttf') format('truetype'),
+        url('../../public/fonts/condenso/Condenso-Regular.svg#Condenso-Regular') format('svg');
     font-weight: 400;
     font-style: normal;
 }
@@ -715,35 +715,35 @@ section {
 
 @font-face {
     font-family: 'Poppins';
-    src: url('/daivai/fonts/Poppins/Poppins-Light.ttf') format('truetype');
+    src: url('../../public/fonts/Poppins/Poppins-Light.ttf') format('truetype');
     font-weight: 300;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Poppins';
-    src: url('/daivai/fonts/Poppins/Poppins-Regular.ttf') format('truetype');
+    src: url('../../public/fonts/Poppins/Poppins-Regular.ttf') format('truetype');
     font-weight: 400;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Poppins';
-    src: url('/daivai/fonts/Poppins/Poppins-Medium.ttf') format('truetype');
+    src: url('../../public/fonts/Poppins/Poppins-Medium.ttf') format('truetype');
     font-weight: 500;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Poppins';
-    src: url('/daivai/fonts/Poppins/Poppins-SemiBold.ttf') format('truetype');
+    src: url('../../public/fonts/Poppins/Poppins-SemiBold.ttf') format('truetype');
     font-weight: 600;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Poppins';
-    src: url('/daivai/fonts/Poppins/Poppins-Bold.ttf') format('truetype');
+    src: url('../../public/fonts/Poppins/Poppins-Bold.ttf') format('truetype');
     font-weight: 700;
     font-style: normal;
 }
@@ -901,7 +901,7 @@ section {
     opacity: 0;
     z-index: -1;
     /* Use the sticker image and make it completely black */
-    background-image: url('/daivai/images/chiodo-sticker.webp');
+    background-image: url('../../public/images/chiodo-sticker.webp');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -925,7 +925,7 @@ section {
     position: absolute;
     width: 100%;
     left: 0;
-    background-image: url('/daivai/images/chiodo-sticker.png');
+    background-image: url('../../public/images/chiodo-sticker.png');
     background-size: 100% 450px;
     background-repeat: no-repeat;
     transform-origin: top center;

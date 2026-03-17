@@ -1,6 +1,6 @@
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Draggable } from "gsap/draggable";
+import { Draggable } from "gsap/Draggable";
 
 gsap.registerPlugin(ScrollTrigger, Draggable);
 
