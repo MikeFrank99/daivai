@@ -589,17 +589,45 @@ export function initEventsSlider() {
     const cards = Array.from(slider.querySelectorAll('.event-card'));
     if (cards.length === 0) return;
 
+    // Pre-calculated data to avoid layout thrashing
+    let cardData = [];
+    let wrapperWidth = 0;
+    const isDesktop = () => window.innerWidth >= 769;
+
+    // Quick setters for performance
+    const cardSetters = cards.map(card => ({
+        scale: gsap.quickSetter(card, "scale"),
+        opacity: gsap.quickSetter(card, "opacity"),
+        zIndex: gsap.quickSetter(card, "zIndex"),
+        x: gsap.quickSetter(card, "x", "px")
+    }));
+
     function setupLayout() {
-        const wrapperWidth = wrapper.offsetWidth;
-        const isDesktop = wrapperWidth >= 769;
+        wrapperWidth = wrapper.offsetWidth;
+        const desktop = isDesktop();
         
         const cardWidth = cards[0].offsetWidth;
         const sidePadding = (wrapperWidth - cardWidth) / 2;
         
         slider.style.paddingLeft = `${sidePadding}px`;
         slider.style.paddingRight = `${sidePadding}px`;
-        slider.style.gap = isDesktop ? "6vw" : "1.5rem";
+        slider.style.gap = desktop ? "6vw" : "1.5rem";
         
+        // Cache card centers relative to the slider container
+        cardData = cards.map((card, i) => {
+            // Force a thin layer and optimize
+            gsap.set(card, { 
+                willChange: "transform, opacity",
+                rotationY: 0,
+                boxShadow: "none",
+                transformOrigin: "center center"
+            });
+            
+            return {
+                center: card.offsetLeft + (card.offsetWidth / 2)
+            };
+        });
+
         ScrollTrigger.refresh();
         
         setTimeout(() => {
@@ -614,50 +642,43 @@ export function initEventsSlider() {
     
     // Navigation State
     let currentIdx = 0;
+    let ticking = false;
 
-    const onScroll = () => {
-        if (!wrapper || !cards.length) return;
-        const wrapperRect = wrapper.getBoundingClientRect();
-        const wrapperCenter = wrapperRect.left + (wrapperRect.width / 2);
-        const isDesktop = window.innerWidth >= 769;
+    const updateSlider = () => {
+        const desktop = isDesktop();
+        const scrollLeft = wrapper.scrollLeft;
+        const wrapperCenter = scrollLeft + (wrapperWidth / 2);
 
         let closestIdx = currentIdx;
         let minDiff = Infinity;
 
-        cards.forEach((card, i) => {
-            const cardRect = card.getBoundingClientRect();
-            const cardCenter = cardRect.left + (cardRect.width / 2);
-            const signedDistance = cardCenter - wrapperCenter;
-            const distance = Math.abs(signedDistance);
-            const maxDistance = wrapperRect.width / 1.2; // Adjusted range
+        cardData.forEach((data, i) => {
+            const distance = Math.abs(data.center - wrapperCenter);
+            const signedDistance = data.center - wrapperCenter;
+            const maxDistance = wrapperWidth / 1.1; // Range for effect
             const normalized = Math.min(1, distance / maxDistance);
             
+            const setter = cardSetters[i];
             let scale, opacity, zIndex, xMove = 0;
 
-            if (isDesktop) {
-                // FLAT DESKTOP: Only scale, opacity and slight overlap (no 3D)
+            if (desktop) {
+                // DESKTOP: Scale, opacity and horizontal overlap
                 scale = 1.15 - (normalized * 0.3);
                 opacity = 1 - (normalized * 0.5);
                 zIndex = Math.round((1 - normalized) * 100);
-                
-                // Flat horizontal shift for overlay effect
                 xMove = -signedDistance * 0.15 * normalized;
             } else {
                 // MOBILE: Simplified clean scaling
-                scale = 1.0 - (normalized * 0.12);
-                opacity = 1.0 - (normalized * 0.4);
+                // Reduced range and intensity for mobile smoothness
+                scale = 1.0 - (normalized * 0.14);
+                opacity = 1.0 - (normalized * 0.45);
                 zIndex = Math.round((1 - normalized) * 10);
             }
             
-            gsap.set(card, { 
-                scale: scale, 
-                opacity: opacity, 
-                zIndex: zIndex,
-                x: xMove,
-                rotationY: 0,
-                boxShadow: "none",
-                transformOrigin: "center center"
-            });
+            setter.scale(scale);
+            setter.opacity(opacity);
+            setter.zIndex(zIndex);
+            setter.x(xMove);
 
             if (distance < minDiff) {
                 minDiff = distance;
@@ -667,6 +688,15 @@ export function initEventsSlider() {
 
         if (closestIdx !== currentIdx) {
             currentIdx = closestIdx;
+        }
+        
+        ticking = false;
+    };
+
+    const onScroll = () => {
+        if (!ticking) {
+            window.requestAnimationFrame(updateSlider);
+            ticking = true;
         }
     };
 
@@ -682,7 +712,7 @@ export function initEventsSlider() {
             dragClickables: true,
             allowEventDefault: true,
             onPress: () => gsap.killTweensOf(wrapper),
-            onDrag: onScroll,
+            onDrag: updateSlider,
             onClick: function(e) {
                 const clickedCard = e.target.closest('.event-card');
                 const isButton = e.target.closest('.btn-partecipa');
@@ -699,9 +729,8 @@ export function initEventsSlider() {
                 let targetIdx = 0;
                 let minDiff = Infinity;
                 
-                cards.forEach((card, i) => {
-                    const cardCenter = card.offsetLeft + (card.offsetWidth / 2);
-                    const diff = Math.abs(centerX - cardCenter);
+                cardData.forEach((data, i) => {
+                    const diff = Math.abs(centerX - data.center);
                     if (diff < minDiff) {
                         minDiff = diff;
                         targetIdx = i;
@@ -718,15 +747,15 @@ export function initEventsSlider() {
         
         gsap.killTweensOf(wrapper);
         currentIdx = index;
-        const card = cards[index];
-        const scrollTarget = card.offsetLeft - (wrapper.offsetWidth / 2) + (card.offsetWidth / 2);
+        const data = cardData[index];
+        const scrollTarget = data.center - (wrapperWidth / 2);
         
         gsap.to(wrapper, {
             scrollLeft: scrollTarget,
             duration: 0.6,
             ease: "expo.out",
             overwrite: true,
-            onUpdate: onScroll
+            onUpdate: updateSlider
         });
     };
 
@@ -734,12 +763,12 @@ export function initEventsSlider() {
     if (wrapper._resizer) window.removeEventListener('resize', wrapper._resizer);
     wrapper._resizer = () => {
         setupLayout();
-        onScroll();
+        updateSlider();
     };
     window.addEventListener('resize', wrapper._resizer);
 
     // Initial state
-    onScroll();
+    updateSlider();
 }
 
 // ==========================================
