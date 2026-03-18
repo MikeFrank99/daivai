@@ -5,7 +5,7 @@ import react from '@astrojs/react';
 // https://astro.build/config
 export default defineConfig({
   // Aggiornato con il tuo nuovo dominio personalizzato
-  site: 'https://dai-vai.it',
+  site: 'https://dai-vai.com',
   
   // Rimosso '/daivai' perché Cloudflare serve il sito dalla root del dominio
   base: '/', 
