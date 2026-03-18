@@ -230,7 +230,7 @@ npm run build
 npm run dev
 
 # Vedere pagine locali
-open http://localhost:4321/daivai/
+open http://localhost:4321/
 
 # Importare funzioni backend nei componenti
 # import { getFunctionName } from '@/lib/database/moduleName';
@@ -326,6 +326,9 @@ Prima di creare una PR, verifica:
 - [ ] Path aliases usati per import: `@/lib/...`
 - [ ] Pagine si caricano senza errori: `npm run dev`
 - [ ] Nessuna query Supabase diretta nel codice
+- [ ] Asset path usano `/` come radice (es. `/images/...`), **mai** `/daivai/...`
+- [ ] Redirect JS usano path senza prefisso: `window.location.href = "/login"`, non `"/daivai/login"`
+- [ ] Redirect Astro usano path senza prefisso: `Astro.redirect("/login")`, non `Astro.redirect("/daivai/login")`
 
 ---
 
@@ -338,6 +341,26 @@ Questo workflow permette di:
 - Avere codice più organizzato e manutenibile
 - Separare chiaramente frontend e backend
 - Iterare velocemente sulle feature
+
+---
+
+## 🌐 Hosting & Deployment
+
+Il progetto è hostato su **Cloudflare Pages** alla radice del dominio `https://dai-vai.com`.
+
+> ⚠️ **ATTENZIONE:** Il prefisso `/daivai/` era usato in passato quando il progetto era su GitHub Pages (`blindblues.github.io/daivai`). Da quando è stato migrato a Cloudflare Pages, **NON deve essere mai usato**.
+
+### Regole per i path:
+- ✅ `/images/DaiVai.svg` → corretto
+- ✅ `window.location.href = "/profile"` → corretto
+- ✅ `Astro.redirect("/login")` → corretto
+- ❌ `/daivai/images/DaiVai.svg` → sbagliato
+- ❌ `window.location.href = "/daivai/profile"` → sbagliato
+- ❌ `Astro.redirect("/daivai/login")` → sbagliato
+
+La configurazione in `astro.config.mjs` ha `base: '/'`.
+
+**Per fare il deploy:** basta fare `git push` sul branch `main`. Cloudflare Pages esegue il build automaticamente.
 
 ---
 

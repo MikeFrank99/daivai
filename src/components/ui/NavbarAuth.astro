@@ -23,7 +23,7 @@ import Auth from "@/components/features/Auth.astro";
                 <line x1="3" y1="18" x2="21" y2="18"></line>
             </svg>
             <img
-                src="/daivai/images/DaiVai-yellow.svg"
+                src="/images/DaiVai-yellow.svg"
                 alt="Logo"
                 class="menu-logo-toggle"
                 style="display: none; opacity: 0;"
@@ -79,13 +79,13 @@ import Auth from "@/components/features/Auth.astro";
                     d="M 500, 500 m -380, 0 a 380,380 0 1,0 760,0 a 380,380 0 1,0 -760,0"
                     fill="transparent"
                     style="pointer-events: none;"></path>
-                <a href="/daivai/ultimi-eventi" class="menu-link">
+                <a href="/ultimi-eventi" class="menu-link">
                     <text class="menu-item-text">
                         <textPath
                             href="#path-ring-1"
                             xlink:href="#path-ring-1"
                             class="menu-text-path"
-                            data-href="/daivai/ultimi-eventi"
+                            data-href="/ultimi-eventi"
                             textLength="2387"
                             lengthAdjust="spacing"
                             >ULTIMI EVENTI • ULTIMI EVENTI • ULTIMI EVENTI
@@ -104,13 +104,13 @@ import Auth from "@/components/features/Auth.astro";
                     d="M 500, 500 m -270, 0 a 270,270 0 1,0 540,0 a 270,270 0 1,0 -540,0"
                     fill="transparent"
                     style="pointer-events: none;"></path>
-                <a href="/daivai/cosa-siamo" class="menu-link">
+                <a href="/cosa-siamo" class="menu-link">
                     <text class="menu-item-text">
                         <textPath
                             href="#path-ring-2"
                             xlink:href="#path-ring-2"
                             class="menu-text-path"
-                            data-href="/daivai/cosa-siamo"
+                            data-href="/cosa-siamo"
                             textLength="1696"
                             lengthAdjust="spacing"
                             >COSA SIAMO • COSA SIAMO • COSA SIAMO • COSA SIAMO
@@ -129,13 +129,13 @@ import Auth from "@/components/features/Auth.astro";
                     d="M 500, 500 m -160, 0 a 160,160 0 1,0 320,0 a 160,160 0 1,0 -320,0"
                     fill="transparent"
                     style="pointer-events: none;"></path>
-                <a href="/daivai/" class="menu-link">
+                <a href="/" class="menu-link">
                     <text class="menu-item-text">
                         <textPath
                             href="#path-ring-3"
                             xlink:href="#path-ring-3"
                             class="menu-text-path"
-                            data-href="/daivai/"
+                            data-href="/"
                             textLength="1005"
                             lengthAdjust="spacing"
                             >HOME • HOME • HOME • HOME •&#160;</textPath
@@ -226,7 +226,7 @@ import Auth from "@/components/features/Auth.astro";
         } = await supabase.auth.getUser();
 
         if (user && profileLink) {
-            profileLink.href = "/daivai/profile";
+            profileLink.href = "/profile";
         } else {
             if (profileLink) {
                 profileLink.addEventListener("click", (e) => {

@@ -12,7 +12,7 @@ import { supabase } from "@/lib/client";
         <link
             rel="icon"
             type="image/svg+xml"
-            href="/daivai/images/DaiVai.svg"
+            href="/images/DaiVai.svg"
         />
     </head>
     <body>
@@ -20,7 +20,7 @@ import { supabase } from "@/lib/client";
             <div class="complete-profile-container">
                 <div class="header">
                     <img
-                        src="/daivai/images/DaiVai-yellow.svg"
+                        src="/images/DaiVai-yellow.svg"
                         alt="Logo"
                         class="logo"
                     />
@@ -129,7 +129,7 @@ import { supabase } from "@/lib/client";
                 } = await supabase.auth.getUser();
 
                 if (!user) {
-                    window.location.href = "/daivai/login";
+                    window.location.href = "/login";
                     return;
                 }
 
@@ -208,7 +208,7 @@ import { supabase } from "@/lib/client";
                             status.className = "form-status success";
                         }
                         setTimeout(() => {
-                            window.location.href = "/daivai/profile";
+                            window.location.href = "/profile";
                         }, 1500);
                     }
                 });
@@ -220,7 +220,7 @@ import { supabase } from "@/lib/client";
                         .update({ profile_completed: true })
                         .eq("id", user.id);
 
-                    window.location.href = "/daivai/profile";
+                    window.location.href = "/profile";
                 });
             }
 

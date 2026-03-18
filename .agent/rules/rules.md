@@ -67,7 +67,8 @@ Per dettagli completi sul workflow di collaborazione, leggi `TEAM_WORKFLOW.md` n
 
 - **Framework:** Astro 5 (v5.16.15+)
 - **Output:** Static (SSG)
-- **Base URL:** `/daivai` (importante per asset paths)
+- **Hosting:** Cloudflare Pages (dominio: `https://dai-vai.com`)
+- **Base URL:** `/` — il sito è servito dalla radice del dominio, NON da un sottopercorso
 - **Database:** Supabase (Postgres)
   - Tabelle: `profiles`, `events`, `participations`
   - Storage bucket: `user-documents` (PDF)
@@ -174,8 +175,15 @@ npm run preview
 ```
 
 ### Asset Paths
-- Tutti gli asset devono usare base URL `/daivai/`
-- Esempio: `/daivai/fonts/Poppins/...` non `/fonts/...`
+
+> ⚠️ **IMPORTANTE:** Il progetto è hostato su **Cloudflare Pages** alla radice del dominio (`https://dai-vai.com/`). Il prefisso `/daivai/` non deve MAI essere usato nei path degli asset o nei link.
+
+- Tutti gli asset usano path assoluti dalla radice: `/images/`, `/fonts/`, `/favicon/`
+- ✅ Corretto: `/images/DaiVai.svg`, `/fonts/condenso/Condenso-Regular.woff2`
+- ❌ Sbagliato: `/daivai/images/DaiVai.svg`, `/daivai/fonts/...`
+- Lo stesso vale per i redirect JavaScript: `window.location.href = "/profile"` non `"/daivai/profile"`
+- E per i redirect Astro server-side: `Astro.redirect("/login")` non `Astro.redirect("/daivai/login")`
+- La configurazione in `astro.config.mjs` ha `base: '/'`
 
 ---
 

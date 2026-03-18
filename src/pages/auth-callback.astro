@@ -5,7 +5,7 @@ import { supabase } from "@/lib/client";
 const session = await supabase.auth.getSession();
 
 if (!session.data.session) {
-    return Astro.redirect("/daivai/login");
+    return Astro.redirect("/login");
 }
 
 // Check if profile exists and if it's completed
@@ -17,11 +17,11 @@ const { data: profile } = await supabase
 
 // If profile doesn't exist or is not completed, redirect to complete-profile
 if (!profile || profile.profile_completed === false) {
-    return Astro.redirect("/daivai/complete-profile");
+    return Astro.redirect("/complete-profile");
 }
 
 // Otherwise redirect to profile page
-return Astro.redirect("/daivai/profile");
+return Astro.redirect("/profile");
 ---
 
 <!doctype html>

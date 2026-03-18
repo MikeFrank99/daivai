@@ -12,7 +12,7 @@ import NavbarAuth from "../components/ui/NavbarAuth.astro";
         <link
             rel="icon"
             type="image/svg+xml"
-            href="/daivai/images/DaiVai.svg"
+            href="/images/DaiVai.svg"
         />
         <meta name="theme-color" content="#FB6068" />
     </head>
@@ -36,7 +36,7 @@ import NavbarAuth from "../components/ui/NavbarAuth.astro";
                     ⛔ Accesso negato. Devi essere un amministratore per
                     visualizzare questa pagina.
                 </p>
-                <a href="/daivai/" class="btn-back">Torna alla home</a>
+                <a href="/" class="btn-back">Torna alla home</a>
             </div>
 
             <!-- Admin content (nascosto finché non verificato) -->
@@ -236,7 +236,7 @@ import NavbarAuth from "../components/ui/NavbarAuth.astro";
                     data: { user },
                 } = await supabase.auth.getUser();
                 if (!user) {
-                    window.location.href = "/daivai/login";
+                    window.location.href = "/login";
                     return false;
                 }
                 const admin = await isAdmin(user.id);
@@ -288,7 +288,7 @@ import NavbarAuth from "../components/ui/NavbarAuth.astro";
             // ─── Build preview card (stesso stile pagina eventi) ───────────────
             function buildPreviewCard(ev: any): string {
                 const PLACEHOLDER =
-                    "/daivai/images/blue-sky-background-with-clouds-free-photo.webp";
+                    "/images/blue-sky-background-with-clouds-free-photo.webp";
                 return `
                 <div class="event-card admin-preview-card">
                     <div class="event-card-image">

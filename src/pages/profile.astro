@@ -19,34 +19,34 @@ import DocumentUpload from "../components/features/DocumentUpload.astro";
         <link
             rel="apple-touch-icon"
             sizes="180x180"
-            href="/daivai/favicon/apple-touch-icon.png"
+            href="/favicon/apple-touch-icon.png"
         />
         <link
             rel="icon"
             type="image/png"
             sizes="32x32"
-            href="/daivai/favicon/favicon-32x32.png"
+            href="/favicon/favicon-32x32.png"
         />
         <link
             rel="icon"
             type="image/png"
             sizes="16x16"
-            href="/daivai/favicon/favicon-16x16.png"
+            href="/favicon/favicon-16x16.png"
         />
-        <link rel="manifest" href="/daivai/favicon/site.webmanifest" />
-        <link rel="shortcut icon" href="/daivai/favicon/favicon.ico" />
+        <link rel="manifest" href="/favicon/site.webmanifest" />
+        <link rel="shortcut icon" href="/favicon/favicon.ico" />
 
         <!-- Favicon SVG -->
         <link
             rel="icon"
             type="image/svg+xml"
-            href="/daivai/images/DaiVai.svg"
+            href="/images/DaiVai.svg"
         />
 
         <!-- Font preload -->
         <link
             rel="preload"
-            href="/daivai/fonts/condenso/Condenso-Regular.woff2"
+            href="/fonts/condenso/Condenso-Regular.woff2"
             as="font"
             type="font/woff2"
             crossorigin
@@ -143,7 +143,7 @@ import DocumentUpload from "../components/features/DocumentUpload.astro";
                 <!-- Action Bar -->
                 <section class="profile-action-bar" id="card-actions">
                     <a
-                        href="/daivai/admin"
+                        href="/admin"
                         id="admin-link"
                         class="btn-action btn-admin-panel"
                         style="display: none;"
@@ -337,7 +337,7 @@ import DocumentUpload from "../components/features/DocumentUpload.astro";
                         user = authUser;
 
                         if (!user) {
-                            window.location.href = "/daivai/login";
+                            window.location.href = "/login";
                             return;
                         }
 
@@ -348,7 +348,7 @@ import DocumentUpload from "../components/features/DocumentUpload.astro";
 
                         if (error || !profile) {
                             console.error("Profile error:", error);
-                            window.location.href = "/daivai/login";
+                            window.location.href = "/login";
                             return;
                         }
                     }
@@ -494,7 +494,7 @@ import DocumentUpload from "../components/features/DocumentUpload.astro";
                     animateEntrance();
                 } catch (error) {
                     console.error("Error loading profile:", error);
-                    window.location.href = "/daivai/login";
+                    window.location.href = "/login";
                 }
             }
 
@@ -796,7 +796,7 @@ import DocumentUpload from "../components/features/DocumentUpload.astro";
             const logoutBtn = document.getElementById("logout-btn");
             logoutBtn?.addEventListener("click", async () => {
                 await supabase.auth.signOut();
-                window.location.href = "/daivai/";
+                window.location.href = "/";
             });
 
             // Delete Account Logic
@@ -878,7 +878,7 @@ import DocumentUpload from "../components/features/DocumentUpload.astro";
                         await supabase.auth.signOut();
 
                         // 4. Redirect
-                        window.location.href = "/daivai/";
+                        window.location.href = "/";
                     } catch (error) {
                         console.error("Delete error:", error);
                         alert(

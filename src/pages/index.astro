@@ -18,33 +18,33 @@ import Sticker from "../components/ui/Sticker.astro";
         <link
             rel="apple-touch-icon"
             sizes="180x180"
-            href="/daivai/favicon/apple-touch-icon.png"
+            href="/favicon/apple-touch-icon.png"
         />
         <link
             rel="icon"
             type="image/png"
             sizes="32x32"
-            href="/daivai/favicon/favicon-32x32.png"
+            href="/favicon/favicon-32x32.png"
         />
         <link
             rel="icon"
             type="image/png"
             sizes="16x16"
-            href="/daivai/favicon/favicon-16x16.png"
+            href="/favicon/favicon-16x16.png"
         />
-        <link rel="manifest" href="/daivai/favicon/site.webmanifest" />
-        <link rel="shortcut icon" href="/daivai/favicon/favicon.ico" />
+        <link rel="manifest" href="/favicon/site.webmanifest" />
+        <link rel="shortcut icon" href="/favicon/favicon.ico" />
 
         <!-- Favicon SVG per browser moderni -->
         <link
             rel="icon"
             type="image/svg+xml"
-            href="/daivai/images/DaiVai.svg"
+            href="/images/DaiVai.svg"
         />
 
         <link
             rel="preload"
-            href="/daivai/fonts/condenso/Condenso-Regular.woff2"
+            href="/fonts/condenso/Condenso-Regular.woff2"
             as="font"
             type="font/woff2"
             crossorigin
@@ -56,7 +56,7 @@ import Sticker from "../components/ui/Sticker.astro";
         <link
             rel="preload"
             as="image"
-            href="/daivai/images/DaiVai-yellow.svg"
+            href="/images/DaiVai-yellow.svg"
         />
 
         <!-- CSS Imported in frontmatter -->
@@ -69,7 +69,7 @@ import Sticker from "../components/ui/Sticker.astro";
                     <!-- Layer 1: Bagliore (Sfondo) -->
                     <div class="parallax-layer layer-1">
                         <img
-                            src="/daivai/images/Parallasse/1_bagliore.svg"
+                            src="/images/Parallasse/1_bagliore.svg"
                             alt=""
                         />
                     </div>
@@ -77,7 +77,7 @@ import Sticker from "../components/ui/Sticker.astro";
                     <div class="parallax-layer layer-2">
                         <img
                             id="parallax-sun"
-                            src="/daivai/images/Parallasse/2_sole.svg"
+                            src="/images/Parallasse/2_sole.svg"
                             alt=""
                         />
                     </div>
@@ -123,7 +123,7 @@ import Sticker from "../components/ui/Sticker.astro";
                     <div class="parallax-layer layer-3">
                         <img
                             id="parallax-mountains"
-                            src="/daivai/images/Parallasse/3_montagne.svg"
+                            src="/images/Parallasse/3_montagne.svg"
                             alt=""
                         />
                     </div>
@@ -131,7 +131,7 @@ import Sticker from "../components/ui/Sticker.astro";
                     <div class="parallax-layer layer-4">
                         <img
                             id="parallax-trees"
-                            src="/daivai/images/Parallasse/4_alberi.svg"
+                            src="/images/Parallasse/4_alberi.svg"
                             alt=""
                         />
                     </div>
@@ -195,7 +195,7 @@ import Sticker from "../components/ui/Sticker.astro";
                 ></path>
             </svg>
             <img
-                src="/daivai/images/DaiVai-yellow.svg"
+                src="/images/DaiVai-yellow.svg"
                 alt="Dai e Vai Logo"
                 class="footer-logo"
             />
@@ -283,7 +283,7 @@ import Sticker from "../components/ui/Sticker.astro";
                       )
                     : 0;
                 const PLACEHOLDER =
-                    "/daivai/images/blue-sky-background-with-clouds-free-photo.webp";
+                    "/images/blue-sky-background-with-clouds-free-photo.webp";
 
                 let btnClass = "btn-partecipa";
                 let btnLabel = "Partecipa";
@@ -380,7 +380,7 @@ import Sticker from "../components/ui/Sticker.astro";
                     .forEach((btn) => {
                         btn.addEventListener("click", async () => {
                             if (!user) {
-                                window.location.href = "/daivai/login";
+                                window.location.href = "/login";
                                 return;
                             }
 
